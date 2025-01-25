@@ -1,0 +1,12 @@
+{
+  "name": "Tree 1",
+  "type": "mesh",
+  "collisionDetection": true,
+  "mesh": {
+    "rescale": 0.01
+  },
+  "id": "9e0c7580-83cc-4bac-9789-cf8d80563b45",
+  "fileKey": "Tree 1.fbx",
+  "fileFormat": "fbx",
+  "sourceFile": "C:\\Users\\malte\\OneDrive\\Hology\\Trees\\Tree 1.fbx"
+}
