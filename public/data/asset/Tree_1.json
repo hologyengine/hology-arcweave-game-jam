@@ -3,10 +3,13 @@
   "type": "mesh",
   "collisionDetection": true,
   "mesh": {
-    "rescale": 0.01
+    "rescale": 0.01,
+    "collisions": {}
   },
   "id": "9e0c7580-83cc-4bac-9789-cf8d80563b45",
   "fileKey": "Tree 1.fbx",
   "fileFormat": "fbx",
-  "sourceFile": "C:\\Users\\malte\\OneDrive\\Hology\\Trees\\Tree 1.fbx"
+  "sourceFile": "C:\\Users\\malte\\OneDrive\\Hology\\Trees\\Tree 1.fbx",
+  "receiveShadow": true,
+  "castShadow": true
 }

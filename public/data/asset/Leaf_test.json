@@ -18,10 +18,12 @@
         "value": 1
       },
       "roughness": {
-        "type": 1
+        "type": 1,
+        "value": "0.5"
       },
       "metalness": {
-        "type": 1
+        "type": 1,
+        "value": "0"
       },
       "map": {
         "type": 2
@@ -94,7 +96,7 @@
       }
     },
     "transparent": true,
-    "bloom": true
+    "bloom": false
   },
   "id": "9e0c748b-d8c2-483b-b825-a1fe12c74ca4"
 }
