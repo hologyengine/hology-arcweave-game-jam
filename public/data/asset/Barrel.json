@@ -1,0 +1,12 @@
+{
+  "name": "Barrel",
+  "type": "mesh",
+  "collisionDetection": true,
+  "mesh": {
+    "rescale": 0.01
+  },
+  "id": "9e10301d-8c04-42f3-9c1d-5a911d3bc945",
+  "fileKey": "Barrel.fbx",
+  "fileFormat": "fbx",
+  "sourceFile": "C:\\Users\\malte\\OneDrive\\Hology\\Barrel.fbx"
+}

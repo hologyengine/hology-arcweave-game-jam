@@ -1,0 +1,15 @@
+{
+  "name": "House",
+  "type": "mesh",
+  "collisionDetection": true,
+  "mesh": {
+    "rescale": 0.01,
+    "collisions": {}
+  },
+  "id": "9e10438e-b920-410f-983e-31a9a669fe6a",
+  "fileKey": "House.fbx",
+  "fileFormat": "fbx",
+  "sourceFile": "C:\\Users\\malte\\OneDrive\\Hology\\House.fbx",
+  "castShadow": true,
+  "receiveShadow": true
+}

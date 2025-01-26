@@ -1,0 +1,15 @@
+{
+  "name": "Castle",
+  "type": "mesh",
+  "collisionDetection": true,
+  "mesh": {
+    "rescale": 1,
+    "collisions": {}
+  },
+  "id": "9e10296d-deb8-47d7-b9df-076826b5fc1f",
+  "fileKey": "Castle.fbx",
+  "fileFormat": "fbx",
+  "sourceFile": "C:\\Users\\malte\\OneDrive\\Hology\\Castle.fbx",
+  "castShadow": true,
+  "receiveShadow": true
+}

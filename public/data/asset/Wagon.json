@@ -1,0 +1,12 @@
+{
+  "name": "Wagon",
+  "type": "mesh",
+  "collisionDetection": true,
+  "mesh": {
+    "rescale": 0.01
+  },
+  "id": "9e10378a-eb76-46b3-9ef2-cbff41cd4c60",
+  "fileKey": "Wagon.fbx",
+  "fileFormat": "fbx",
+  "sourceFile": "C:\\Users\\malte\\OneDrive\\Hology\\Wagon.fbx"
+}

@@ -7,25 +7,35 @@
       "metalness": 0,
       "opacity": 1
     },
-    "side": 0,
+    "side": 2,
     "shaderParams": {
       "color": {
         "type": 10,
         "value": "#70e458"
       },
+      "map": {
+        "type": 2
+      },
       "opacity": {
         "type": 1,
         "value": 1
+      },
+      "alphaMap": {
+        "type": 2,
+        "value": "9e0c75cc-24da-49a9-92e2-fbb6179f6478"
       },
       "roughness": {
         "type": 1,
         "value": "0.5"
       },
+      "roughnessMap": {
+        "type": 2
+      },
       "metalness": {
         "type": 1,
         "value": "0"
       },
-      "map": {
+      "metalnessMap": {
         "type": 2
       },
       "lightMap": {
@@ -75,16 +85,6 @@
       "displacementBias": {
         "type": 1
       },
-      "roughnessMap": {
-        "type": 2
-      },
-      "metalnessMap": {
-        "type": 2
-      },
-      "alphaMap": {
-        "type": 2,
-        "value": "9e0c75cc-24da-49a9-92e2-fbb6179f6478"
-      },
       "envMap": {
         "type": 2
       },
@@ -95,8 +95,9 @@
         "type": 1
       }
     },
-    "transparent": true,
-    "bloom": false
+    "transparent": false,
+    "bloom": false,
+    "alphaTest": 0.7
   },
   "id": "9e0c748b-d8c2-483b-b825-a1fe12c74ca4"
 }

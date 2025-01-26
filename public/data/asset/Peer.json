@@ -1,0 +1,12 @@
+{
+  "name": "Peer",
+  "type": "mesh",
+  "collisionDetection": true,
+  "mesh": {
+    "rescale": 0.01
+  },
+  "id": "9e102f17-0114-425a-b7fe-2df775613297",
+  "fileKey": "Peer.fbx",
+  "fileFormat": "fbx",
+  "sourceFile": "C:\\Users\\malte\\OneDrive\\Hology\\Peer.fbx"
+}
