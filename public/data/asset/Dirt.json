@@ -11,10 +11,11 @@
     "shaderParams": {
       "color": {
         "type": 10,
-        "value": "#7c6046"
+        "value": "#ffdbc7"
       },
       "map": {
-        "type": 2
+        "type": 2,
+        "value": "9e145338-2dc6-4346-ab71-984f238290c5"
       },
       "opacity": {
         "type": 1,
@@ -28,7 +29,8 @@
         "value": 1
       },
       "roughnessMap": {
-        "type": 2
+        "type": 2,
+        "value": "9e145338-6372-4ab8-b852-f62d2a86b4ad"
       },
       "metalness": {
         "type": 1,
@@ -95,5 +97,5 @@
       }
     }
   },
-  "id": "9e105090-062e-4ba6-ba26-0e0718372a78"
+  "id": "9e1458c2-1b30-4dfc-96f8-355497b5e397"
 }
