@@ -2,96 +2,51 @@
   "name": "Wood",
   "type": "material",
   "material": {
-    "type": "standard",
+    "type": "landscape-composite",
     "params": {
       "metalness": 0,
       "opacity": 1
     },
     "side": 0,
     "shaderParams": {
-      "color": {
-        "type": 10,
-        "value": "#7c6046"
-      },
-      "map": {
-        "type": 2
-      },
-      "opacity": {
-        "type": 1,
-        "value": 1
-      },
-      "alphaMap": {
-        "type": 2
-      },
-      "roughness": {
-        "type": 1,
-        "value": 1
-      },
-      "roughnessMap": {
-        "type": 2
-      },
-      "metalness": {
-        "type": 1,
-        "value": 0
-      },
-      "metalnessMap": {
-        "type": 2
-      },
-      "lightMap": {
-        "type": 2
-      },
-      "lightMapIntensity": {
-        "type": 1
-      },
-      "aoMap": {
-        "type": 2
-      },
-      "aoMapIntensity": {
-        "type": 1
-      },
-      "emissive": {
-        "type": 10,
-        "value": "#000000"
-      },
-      "emissiveIntensity": {
-        "type": 1
-      },
-      "emissiveMap": {
-        "type": 2
-      },
-      "bumpMap": {
-        "type": 2
-      },
-      "bumpScale": {
-        "type": 1
-      },
-      "normalMap": {
-        "type": 2
-      },
-      "normalScale": {
-        "type": 6,
+      "layers": {
+        "type": 21,
+        "element": 16,
         "value": [
-          0,
-          0
+          "9e16ad05-869e-4dbe-a42c-df5453d668ee",
+          "9e16af64-20c6-4cec-96b6-3b0e45254a9e"
         ]
       },
-      "displacementMap": {
-        "type": 2
+      "uvScale": {
+        "type": 1,
+        "value": 5.9
       },
-      "displacementScale": {
-        "type": 1
+      "transition": {
+        "type": 1,
+        "value": 1
       },
-      "displacementBias": {
-        "type": 1
+      "noiseScale": {
+        "type": 1,
+        "value": 1
       },
-      "envMap": {
-        "type": 2
+      "noiseAmount": {
+        "type": 1,
+        "value": 0.2
       },
-      "envMapIntensity": {
-        "type": 1
+      "softness": {
+        "type": 1,
+        "value": 0.3
       },
-      "refractionRatio": {
-        "type": 1
+      "enableSlope": {
+        "type": 4,
+        "value": false
+      },
+      "slopeMaterial": {
+        "type": 16
+      },
+      "slopeAngle": {
+        "type": 1,
+        "value": 35
       }
     }
   },

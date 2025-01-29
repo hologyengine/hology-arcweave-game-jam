@@ -1,0 +1,20 @@
+{
+  "name": "Grass 1",
+  "type": "mesh",
+  "collisionDetection": true,
+  "mesh": {
+    "rescale": 0.01,
+    "collisions": {}
+  },
+  "id": "9e16cde3-e0e0-4b55-bd62-f869682f540f",
+  "fileKey": "Grass.fbx",
+  "fileFormat": "fbx",
+  "sourceFile": "C:\\Users\\malte\\OneDrive\\Hology\\Downloaded assets\\Grass.fbx",
+  "materialAssignments": [
+    {
+      "color": "#ffffff",
+      "materialId": "9e16ce30-af88-4925-8062-a93dbc7268c1",
+      "name": "standardSurface1"
+    }
+  ]
+}
