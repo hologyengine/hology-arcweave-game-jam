@@ -1,20 +1,29 @@
 {
   "name": "Grass 1",
-  "type": "mesh",
-  "collisionDetection": true,
-  "mesh": {
-    "rescale": 0.01,
-    "collisions": {}
+  "type": "material",
+  "material": {
+    "type": "shader",
+    "params": {
+      "metalness": 0,
+      "opacity": 1
+    },
+    "side": 2,
+    "shaderParams": {
+      "color": {
+        "type": 10,
+        "value": "#1C8800"
+      },
+      "colorBottom": {
+        "type": 10,
+        "value": "#168800"
+      },
+      "alphaMap": {
+        "type": 2,
+        "value": "9e16cdcb-76c2-4edd-9cfc-95717ae05bdb"
+      }
+    },
+    "alphaTest": 0.55,
+    "shader": "GrassShader"
   },
-  "id": "9e16cde3-e0e0-4b55-bd62-f869682f540f",
-  "fileKey": "Grass.fbx",
-  "fileFormat": "fbx",
-  "sourceFile": "C:\\Users\\malte\\OneDrive\\Hology\\Downloaded assets\\Grass.fbx",
-  "materialAssignments": [
-    {
-      "color": "#ffffff",
-      "materialId": "9e16ce30-af88-4925-8062-a93dbc7268c1",
-      "name": "standardSurface1"
-    }
-  ]
+  "id": "9e16ce30-af88-4925-8062-a93dbc7268c1"
 }

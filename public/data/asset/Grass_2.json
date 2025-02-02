@@ -1,0 +1,28 @@
+{
+  "name": "Grass 2",
+  "type": "material",
+  "material": {
+    "type": "shader",
+    "params": {
+      "metalness": 0,
+      "opacity": 1
+    },
+    "side": 2,
+    "shaderParams": {
+      "color": {
+        "type": 10,
+        "value": "#1F8800"
+      },
+      "colorBottom": {
+        "type": 10,
+        "value": "#2B8700"
+      },
+      "alphaMap": {
+        "type": 2,
+        "value": "9e1e68c7-eaf0-47be-b3ee-743b1ab3a1b5"
+      }
+    },
+    "shader": "GrassShader"
+  },
+  "id": "9e1e66e4-f5fc-4e14-bbae-55895ff94a3f"
+}
