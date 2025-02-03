@@ -3,7 +3,8 @@
   "type": "mesh",
   "collisionDetection": true,
   "mesh": {
-    "rescale": 0.01
+    "rescale": 0.01,
+    "collisions": {}
   },
   "id": "9e1624fb-63ea-4428-82ba-d7fedb5ff67d",
   "fileKey": "Petal_1.fbx",
