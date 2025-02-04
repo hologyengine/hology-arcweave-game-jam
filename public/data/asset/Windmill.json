@@ -1,0 +1,12 @@
+{
+  "name": "Windmill",
+  "type": "mesh",
+  "collisionDetection": true,
+  "mesh": {
+    "rescale": 0.01
+  },
+  "id": "9e208fe5-eeb4-4139-aa8e-8876286952b9",
+  "fileKey": "Windmill.fbx",
+  "fileFormat": "fbx",
+  "sourceFile": "C:\\Users\\malte\\OneDrive\\Hology\\Windmill.fbx"
+}
