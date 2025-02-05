@@ -7,7 +7,7 @@
       "metalness": 0,
       "opacity": 1
     },
-    "side": 0,
+    "side": 2,
     "shaderParams": {
       "color": {
         "type": 10,

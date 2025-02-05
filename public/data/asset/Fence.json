@@ -9,5 +9,12 @@
   "id": "9e209253-eba6-4ce1-9be3-a87ad74432f8",
   "fileKey": "Fence.fbx",
   "fileFormat": "fbx",
-  "sourceFile": "C:\\Users\\malte\\OneDrive\\Hology\\Fence.fbx"
+  "sourceFile": "C:\\Users\\malte\\OneDrive\\Hology\\Fence.fbx",
+  "materialAssignments": [
+    {
+      "color": "#ffffff",
+      "materialId": "9e209d1c-6f54-4d8a-a197-70caa52152a5",
+      "name": "standardSurface1"
+    }
+  ]
 }
