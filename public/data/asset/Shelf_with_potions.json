@@ -61,5 +61,7 @@
       "materialId": "9e243de1-ef06-4a93-a18a-381b72b0efaa",
       "name": "Potion_green"
     }
-  ]
+  ],
+  "receiveShadow": true,
+  "castShadow": true
 }

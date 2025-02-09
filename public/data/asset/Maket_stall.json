@@ -61,5 +61,7 @@
       "materialId": "9e209f21-e270-4c79-8910-0856388e5c5d",
       "name": "Pumpkin_stem"
     }
-  ]
+  ],
+  "receiveShadow": true,
+  "castShadow": true
 }

@@ -31,5 +31,7 @@
       "materialId": "9e209e58-c340-4ad8-8b90-0e0e45613756",
       "name": "Rope"
     }
-  ]
+  ],
+  "castShadow": true,
+  "receiveShadow": true
 }

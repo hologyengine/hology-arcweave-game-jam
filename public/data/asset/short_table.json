@@ -16,5 +16,7 @@
       "materialId": "9e209d1c-6f54-4d8a-a197-70caa52152a5",
       "name": "Wood"
     }
-  ]
+  ],
+  "receiveShadow": true,
+  "castShadow": true
 }

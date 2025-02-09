@@ -11,11 +11,11 @@
     "shaderParams": {
       "color": {
         "type": 10,
-        "value": "#1F8800"
+        "value": "#55ab3f"
       },
       "colorBottom": {
         "type": 10,
-        "value": "#2B8700"
+        "value": "#225421"
       },
       "alphaMap": {
         "type": 2,

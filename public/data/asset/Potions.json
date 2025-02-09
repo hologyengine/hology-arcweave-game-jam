@@ -71,5 +71,7 @@
       "materialId": "9e209dfe-e8f2-49e4-9520-288ef1f992da",
       "name": "White"
     }
-  ]
+  ],
+  "receiveShadow": true,
+  "castShadow": true
 }

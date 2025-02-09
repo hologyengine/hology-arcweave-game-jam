@@ -11,15 +11,15 @@
     "shaderParams": {
       "color": {
         "type": 10,
-        "value": "#1C8800"
+        "value": "#539b41"
       },
       "colorBottom": {
         "type": 10,
-        "value": "#168800"
+        "value": "#245823"
       },
       "alphaMap": {
         "type": 2,
-        "value": "9e16cdcb-76c2-4edd-9cfc-95717ae05bdb"
+        "value": "9e1ea1e1-5f88-491a-a0c7-2b7bedf668d3"
       }
     },
     "alphaTest": 0.55,
