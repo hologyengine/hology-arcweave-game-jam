@@ -51,7 +51,7 @@
               },
               "dimensions": {
                 "value": [
-                  743,
+                  1011.8,
                   90,
                   428.6
                 ],
@@ -64,7 +64,7 @@
             "type": "lifetime",
             "params": {
               "duration": {
-                "value": 40,
+                "value": 144.7,
                 "type": 1
               }
             }
@@ -78,7 +78,7 @@
                 "type": 1
               },
               "max": {
-                "value": 0.8,
+                "value": 1.55,
                 "type": 1
               }
             }
@@ -93,7 +93,7 @@
                 "value": [
                   0,
                   0,
-                  740
+                  2009.7
                 ],
                 "type": 8
               },
@@ -163,7 +163,7 @@
               },
               "dimensions": {
                 "value": [
-                  743,
+                  1011.8,
                   79.9,
                   355.4
                 ],
@@ -176,7 +176,7 @@
             "type": "lifetime",
             "params": {
               "duration": {
-                "value": 40.85,
+                "value": 136.75,
                 "type": 1
               }
             }
@@ -190,7 +190,7 @@
                 "type": 1
               },
               "max": {
-                "value": 0.8,
+                "value": 1.45,
                 "type": 1
               }
             }
@@ -205,7 +205,7 @@
                 "value": [
                   0,
                   0,
-                  740
+                  2009.7
                 ],
                 "type": 8
               },
@@ -275,7 +275,7 @@
               },
               "dimensions": {
                 "value": [
-                  743,
+                  1011.8,
                   79.9,
                   355.4
                 ],
@@ -288,7 +288,7 @@
             "type": "lifetime",
             "params": {
               "duration": {
-                "value": 39.85,
+                "value": 127.9,
                 "type": 1
               }
             }
@@ -302,7 +302,7 @@
                 "type": 1
               },
               "max": {
-                "value": 0.8,
+                "value": 1.4,
                 "type": 1
               }
             }
@@ -317,7 +317,7 @@
                 "value": [
                   0,
                   0,
-                  740
+                  2009.7
                 ],
                 "type": 8
               },

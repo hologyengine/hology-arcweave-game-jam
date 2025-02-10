@@ -14,9 +14,19 @@
   "receiveShadow": true,
   "materialAssignments": [
     {
-      "color": "#ffffff",
-      "materialId": "9e16af64-20c6-4cec-96b6-3b0e45254a9e",
-      "name": "standardSurface1"
+      "color": "#aa7e62",
+      "materialId": null,
+      "name": "Wood"
+    },
+    {
+      "color": "#89aaa7",
+      "materialId": null,
+      "name": "Glass"
+    },
+    {
+      "color": "#aaaaaa",
+      "materialId": "9e209dfe-e8f2-49e4-9520-288ef1f992da",
+      "name": "White1"
     }
   ]
 }

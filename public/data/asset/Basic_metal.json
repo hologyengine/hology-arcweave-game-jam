@@ -11,7 +11,7 @@
     "shaderParams": {
       "color": {
         "type": 10,
-        "value": "#ffffff"
+        "value": "#6b6b6b"
       },
       "map": {
         "type": 2
@@ -25,14 +25,14 @@
       },
       "roughness": {
         "type": 1,
-        "value": 0.6
+        "value": 1
       },
       "roughnessMap": {
         "type": 2
       },
       "metalness": {
         "type": 1,
-        "value": 1
+        "value": 0
       },
       "metalnessMap": {
         "type": 2
