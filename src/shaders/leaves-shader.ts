@@ -1,7 +1,7 @@
 
+import { attributes, combineTransforms, dot, float, mix, normalize, rgb, sin, smoothstep, standardMaterial, textureSampler2d, timeUniforms, translateX, translateZ, varyingAttributes, vec2 } from "@hology/core/shader-nodes";
 import { NodeShader, NodeShaderOutput, Parameter } from "@hology/core/shader/shader";
-import { attributes, combineTransforms, cos, dot, float, FloatNode, mix, normalize, rgb, sin, smoothstep, standardMaterial, textureSampler2d, timeUniforms, transformed, translateX, translateZ, varyingAttributes, varyingTransformed, vec2 } from "@hology/core/shader-nodes";
-import { Color, Material, Texture, ShaderMaterial } from 'three';
+import { Color, Material, Texture } from 'three';
 
 export default class LeavesShader extends NodeShader {
   @Parameter()
@@ -31,6 +31,7 @@ export default class LeavesShader extends NodeShader {
 
     const time = timeUniforms.elapsed
     const windDirection = normalize(vec2(-0.2, 0.9))
+    
     const windEffect = sin(dot(attributes.position.xy, windDirection).multiply(10).add(time.multiply(2))).multiply(this.windStrength);
 
     const gradient = mix(rgb(this.color), rgb(this.colorTop), smoothstep(float(this.gradientStart), float(this.gradientEnd), varyingAttributes.position.y))

@@ -6,7 +6,7 @@ import LeavesShader from './leaves-shader';
 
 export default {
   ExampleShader,
-  LeavesShader,
+  LeavesShader,
   GrassShader,
   GrassTestShader,
   WaterShader

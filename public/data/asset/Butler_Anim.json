@@ -1,0 +1,49 @@
+{
+  "name": "Butler_Anim",
+  "type": "mesh",
+  "collisionDetection": true,
+  "id": "9e284b85-2f3e-46ba-b797-75ac5a8c8b27",
+  "fileKey": "Butler_Anim.glb",
+  "fileFormat": "glb",
+  "sourceFile": "C:\\Users\\adamr\\Downloads\\Butler_Anim.glb",
+  "mesh": {
+    "collisions": {}
+  },
+  "materialAssignments": [
+    {
+      "color": "#ffffff",
+      "materialId": "9e243e44-443a-47f3-a2cf-aa4d805fd34c",
+      "name": "mage_texture.004"
+    },
+    {
+      "color": "#ffffff",
+      "materialId": "9e243e44-443a-47f3-a2cf-aa4d805fd34c",
+      "name": "rogue_texture.001"
+    },
+    {
+      "color": "#ffffff",
+      "materialId": "9e243e44-443a-47f3-a2cf-aa4d805fd34c",
+      "name": "rogue_texture.005"
+    },
+    {
+      "color": "#ffffff",
+      "materialId": "9e243e44-443a-47f3-a2cf-aa4d805fd34c",
+      "name": "rogue_texture.018"
+    },
+    {
+      "color": "#ffffff",
+      "materialId": "9e243e44-443a-47f3-a2cf-aa4d805fd34c",
+      "name": "rogue_texture.003"
+    },
+    {
+      "color": "#ffffff",
+      "materialId": "9e243e44-443a-47f3-a2cf-aa4d805fd34c",
+      "name": "mage_texture.028"
+    },
+    {
+      "color": "#ffffff",
+      "materialId": "9e243e44-443a-47f3-a2cf-aa4d805fd34c",
+      "name": "rogue_texture.004"
+    }
+  ]
+}
