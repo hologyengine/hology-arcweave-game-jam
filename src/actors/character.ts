@@ -37,10 +37,11 @@ class Character extends BaseActor {
   private assetLoader = inject(AssetLoader)
   private dialogueService = inject(DialogueService)
 
-  private info = this.dialogueService.getCharacter('odysseus')
+  private info? = this.dialogueService.getCharacter('odysseus')
 
   async onInit(): Promise<void> {
-    const material = await this.assetLoader.getMaterialByAssetId('9e243e44-443a-47f3-a2cf-aa4d805fd34c')
+    this.thirdPersonCamera.camera.far = 2000
+
     const { scene, animations } = await this.assetLoader.getModelByAssetName('Butler_Anim')
     //const animations: AnimationClip[] = []
     //const scene = new Mesh(new SphereGeometry(1), new MeshBasicMaterial({color: 'blue'}))
@@ -53,12 +54,11 @@ class Character extends BaseActor {
         o.visible = false
       }
     }) 
-
     // Show mustache
-    if (this.info.mustache != null) {
+    if (this.info?.mustache != null) {
       if (this.info.mustache in mustaches) {
         scene.traverse(o => {
-          if (o.name === mustaches[this.info.mustache!]) {
+          if (o.name === mustaches[this.info!.mustache!]) {
             o.visible = true
           }
         })

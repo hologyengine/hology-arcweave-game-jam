@@ -16,10 +16,15 @@ export type DialogueElement = {
 @Service()
 class DialogueService {
   readonly activeDialogue = signal<DialogueElement|null>(null)
-  readonly story = new ArcweaveStory(arcweaveProject)
+  story?: ArcweaveStory<typeof arcweaveProject>
+
+  async init() {
+    this.story = new ArcweaveStory(await getProjectData())
+  }
 
   startDialogue(objId: string) {
-    const characterId = this.story.findComponentId({attribute: [
+    if (this.story == null) {return}
+    const characterId = this.story?.findComponentId({attribute: [
       {name: 'object_id', value: objId}, 
       {name: 'object_type', value: 'character'}
     ]})
@@ -27,12 +32,12 @@ class DialogueService {
       console.error(`Could not find character with object_id ${objId}`)
       return
     }
-    const startElementId = this.story.findElementId({attribute: [{name: 'dialogue', value: 'start'}], componentId: characterId})
+    const startElementId = this.story?.findElementId({attribute: [{name: 'dialogue', value: 'start'}], componentId: characterId})
     if (startElementId == null) {
       console.error(`Could not find dialogue start for character with object_id ${objId}`)
       return
     }
-    this.story.setCurrentElement(startElementId)
+    this.story?.setCurrentElement(startElementId)
     this.updateActiveDialogue()
   }
 
@@ -41,12 +46,14 @@ class DialogueService {
   }
 
   selectOption(path: StoryOption) {
-    this.story.selectOption(path)
+    if (this.story == null) {return}
+    this.story?.selectOption(path)
     this.updateActiveDialogue()
   }
 
   private updateActiveDialogue() {
-    const element = this.story.getCurrentElement()
+    if (this.story == null) {return}
+    const element = this.story?.getCurrentElement()
     if (element == null) {
       this.activeDialogue.value = null
       return
@@ -60,12 +67,12 @@ class DialogueService {
   }
 
   getCharacter(objectId: string) {
+    if (this.story == null) {return}
     const componentId = this.story.findComponentId({attribute: [{name: 'object_id', value: objectId}, {name: 'object_type', value: 'character'}]})
     if (componentId == null) {
       throw "No copmonent exists with object id " + objectId
     }
     const attributes = this.story.getComponentAttributes(componentId)
-    console.log("attributes")
     return {
       id: componentId,
       mustache: attributes.mustache != null && typeof attributes.mustache === 'string' 
@@ -78,4 +85,37 @@ export { DialogueService }
 
 export type StoryCharacter = {
   mustache?: number
+}
+
+const corsAnywhere = 'https://cors-anywhere.herokuapp.com/'
+const url = 'https://arcweave.com/api/';
+const defaultProjectHash = 'dQlAKGj6ng'
+const apiKey: string|undefined = import.meta.env.VITE_AW_API_KEY
+
+async function getProjectData(): Promise<typeof arcweaveProject> {
+  const search = window.location.search;
+  const params = new URLSearchParams(search);
+  const projectHash = params.get('project') ?? defaultProjectHash
+
+  
+  const options = {
+    method: 'GET',
+    headers: {
+        'Authorization': 'Bearer ' + apiKey,
+        'Accept': 'application/json'
+    }
+  };
+
+  if (apiKey != null) {
+    const response = await fetch(corsAnywhere + url + projectHash + '/json', options)
+      .then(response => {
+        if (!response.ok) {
+            throw new Error(`Failed to fetch Arcweave Project. HTTP error. Status: ${response.status}`);
+        }
+        return response.json();
+    })
+    return response
+  } else {
+    return arcweaveProject
+  }
 }
