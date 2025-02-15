@@ -73,7 +73,6 @@ class Character extends BaseActor {
         o.castShadow = true
         if (o.material instanceof Material) {
           //o.material = material
-          console.log(o.material)
           o.material.transparent = false
           o.material.side = DoubleSide
           o.material.depthWrite = true
@@ -84,7 +83,7 @@ class Character extends BaseActor {
           path.push(a.name)
         })
         path.push(o.name)
-        console.log(path.join(' -> '))
+        //console.log(path.join(' -> '))
       }
     })
 

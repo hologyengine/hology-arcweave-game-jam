@@ -90,9 +90,11 @@ export type StoryCharacter = {
 const corsAnywhere = 'https://cors-anywhere.herokuapp.com/'
 const url = 'https://arcweave.com/api/';
 const defaultProjectHash = 'dQlAKGj6ng'
-const apiKey: string|undefined = import.meta.env.VITE_AW_API_KEY
+const apiKey: string|undefined = import.meta.env?.VITE_AW_API_KEY
 
 async function getProjectData(): Promise<typeof arcweaveProject> {
+  return arcweaveProject
+  
   const search = window.location.search;
   const params = new URLSearchParams(search);
   const projectHash = params.get('project') ?? defaultProjectHash

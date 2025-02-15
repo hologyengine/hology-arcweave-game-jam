@@ -1,0 +1,9 @@
+{
+  "name": "Priest",
+  "type": "mesh",
+  "collisionDetection": true,
+  "id": "9e378825-ac16-4a58-bb13-85b5d028237a",
+  "fileKey": "Priest.glb",
+  "fileFormat": "glb",
+  "sourceFile": "C:\\Users\\adamr\\Downloads\\Priest.glb"
+}

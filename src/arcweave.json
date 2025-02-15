@@ -4481,14 +4481,24 @@
                 "plain": true
             }
         },
+        "0ff56ae8-12b8-408c-b763-87be73957c16": {
+            "cId": "47341dff-6b98-4689-a8bc-fccf64e8e113",
+            "name": "mustache",
+            "cType": "components",
+            "value": {
+                "data": "2",
+                "type": "string",
+                "plain": true
+            }
+        },
         "11006864-6f66-4c2c-a3b7-d3fae8febc42": {
             "cId": "5265ceac-f13f-47fc-a02c-6eda7eea6b90",
             "name": "dialogue",
             "cType": "elements",
             "value": {
-                "plain": true,
+                "data": "start",
                 "type": "string",
-                "data": "start"
+                "plain": true
             }
         },
         "15dee7e9-33c7-4c35-ac45-2218b29098c9": {
@@ -4595,9 +4605,9 @@
             "name": "dialogue",
             "cType": "elements",
             "value": {
-                "plain": true,
+                "data": "start",
                 "type": "string",
-                "data": "start"
+                "plain": true
             }
         },
         "55809aef-0a07-43f6-a95d-106d936febb6": {
@@ -4736,9 +4746,9 @@
             "name": "dialogue",
             "cType": "elements",
             "value": {
-                "plain": true,
+                "data": "start",
                 "type": "string",
-                "data": "start"
+                "plain": true
             }
         },
         "94e62816-2976-4b74-89ca-ef36fea19937": {
@@ -4841,16 +4851,6 @@
                 "type": "string",
                 "plain": true
             }
-        },
-        "0ff56ae8-12b8-408c-b763-87be73957c16": {
-            "name": "mustache",
-            "cType": "components",
-            "value": {
-                "plain": true,
-                "type": "string",
-                "data": "2"
-            },
-            "cId": "47341dff-6b98-4689-a8bc-fccf64e8e113"
         }
     },
     "name": "Hology Example",

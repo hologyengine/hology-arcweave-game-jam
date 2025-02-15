@@ -1,0 +1,9 @@
+{
+  "name": "Witch",
+  "type": "mesh",
+  "collisionDetection": true,
+  "id": "9e377e7d-8a30-476f-981f-392b64b5cb6f",
+  "fileKey": "Witch.glb",
+  "fileFormat": "glb",
+  "sourceFile": "C:\\Users\\adamr\\Downloads\\Witch.glb"
+}
