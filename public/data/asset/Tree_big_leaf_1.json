@@ -11,7 +11,7 @@
   "fileFormat": "fbx",
   "sourceFile": "C:\\Users\\malte\\OneDrive\\Hology\\Trees\\Tree_big_leaf_1.fbx",
   "castShadow": true,
-  "receiveShadow": true,
+  "receiveShadow": false,
   "materialAssignments": [
     {
       "color": "#ffffff",

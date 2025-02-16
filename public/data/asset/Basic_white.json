@@ -7,7 +7,7 @@
       "metalness": 0,
       "opacity": 1
     },
-    "side": 2,
+    "side": 0,
     "shaderParams": {
       "color": {
         "type": 10,
@@ -95,5 +95,5 @@
       }
     }
   },
-  "id": "9e209dfe-e8f2-49e4-9520-288ef1f992da"
+  "id": "9e3a034c-6dce-4f40-a277-ff542916c113"
 }

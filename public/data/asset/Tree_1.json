@@ -10,7 +10,7 @@
   "fileKey": "Tree 1.fbx",
   "fileFormat": "fbx",
   "sourceFile": "C:\\Users\\malte\\OneDrive\\Hology\\Trees\\Tree 1.fbx",
-  "receiveShadow": true,
+  "receiveShadow": false,
   "castShadow": true,
   "materialAssignments": [
     {
