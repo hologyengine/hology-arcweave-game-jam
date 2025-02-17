@@ -14,19 +14,24 @@
   "receiveShadow": true,
   "materialAssignments": [
     {
-      "color": "#aa7e62",
-      "materialId": null,
+      "color": "#e7e7e7",
+      "materialId": "9e3b8c07-1064-4699-8e49-d8456d9ebebb",
       "name": "Wood"
+    },
+    {
+      "color": "#717171",
+      "materialId": null,
+      "name": "Rocks"
+    },
+    {
+      "color": "#e7e7e7",
+      "materialId": "9e3b7256-ad32-4f50-9864-5302203d399e",
+      "name": "White1"
     },
     {
       "color": "#89aaa7",
       "materialId": null,
       "name": "Glass"
-    },
-    {
-      "color": "#aaaaaa",
-      "materialId": "9e209dfe-e8f2-49e4-9520-288ef1f992da",
-      "name": "White1"
     }
   ]
 }
