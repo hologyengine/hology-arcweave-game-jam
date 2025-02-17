@@ -20,6 +20,14 @@
       "alphaMap": {
         "type": 2,
         "value": "9e1ea1e1-5f88-491a-a0c7-2b7bedf668d3"
+      },
+      "swayAmount": {
+        "type": 1,
+        "value": "50"
+      },
+      "swaySpeed": {
+        "type": 1,
+        "value": 0.2
       }
     },
     "alphaTest": 0.55,

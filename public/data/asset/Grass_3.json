@@ -20,6 +20,14 @@
       "alphaMap": {
         "type": 2,
         "value": "9e1e68c7-eaf0-47be-b3ee-743b1ab3a1b5"
+      },
+      "swayAmount": {
+        "type": 1,
+        "value": "50"
+      },
+      "swaySpeed": {
+        "type": 1,
+        "value": 0.2
       }
     },
     "shader": "GrassShader"
