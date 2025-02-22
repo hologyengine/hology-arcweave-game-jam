@@ -93,13 +93,13 @@ const defaultProjectHash = 'dQlAKGj6ng'
 const apiKey: string|undefined = import.meta.env?.VITE_AW_API_KEY
 
 async function getProjectData(): Promise<typeof arcweaveProject> {
-  return arcweaveProject
+  // Instead of using the api, it can just use the import json export as part of the project.
+  //return arcweaveProject
   
   const search = window.location.search;
   const params = new URLSearchParams(search);
   const projectHash = params.get('project') ?? defaultProjectHash
 
-  
   const options = {
     method: 'GET',
     headers: {
@@ -109,7 +109,7 @@ async function getProjectData(): Promise<typeof arcweaveProject> {
   };
 
   if (apiKey != null) {
-    const response = await fetch(corsAnywhere + url + projectHash + '/json', options)
+    const response = await fetch(url + projectHash + '/json', options)
       .then(response => {
         if (!response.ok) {
             throw new Error(`Failed to fetch Arcweave Project. HTTP error. Status: ${response.status}`);
