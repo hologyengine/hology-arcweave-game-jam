@@ -18,6 +18,8 @@ jobs:
           npm ci
       - name: Compile
         working-directory: ./
+        env:
+          VITE_AW_API_KEY: ${{ secrets.VITE_AW_API_KEY }} 
         run: |
           npx tsc && npx vite build --base=./
       - uses: actions/upload-artifact@main
