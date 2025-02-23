@@ -3,6 +3,7 @@ import { SpawnPoint } from '@hology/core/gameplay/actors';
 import Character from '../actors/character';
 import PlayerController from './player-controller';
 import { DialogueService } from './dialogue-service';
+import CharacterSpawnPoint from '../actors/character-spawn';
 
 @Service()
 class Game extends GameInstance {
@@ -16,7 +17,7 @@ class Game extends GameInstance {
 
     await this.dialogueService.init()
 
-    const spawnPoint = this.world.findActorByType(SpawnPoint)
+    const spawnPoint = this.world.actors.find(a => a instanceof SpawnPoint && !(a instanceof CharacterSpawnPoint)) as SpawnPoint
     const character = await spawnPoint.spawnActor(Character)
     this.playerController.setup(character)
   }

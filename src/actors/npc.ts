@@ -1,5 +1,5 @@
 
-import {Actor, AnimationState, AnimationStateMachine, attach, BaseActor, Parameter, inject} from '@hology/core/gameplay';
+import {Actor, AnimationState, AnimationStateMachine, attach, BaseActor, Parameter, inject, AssetLoader} from '@hology/core/gameplay';
 import { CharacterAnimationComponent } from "@hology/core/gameplay/actors";
 import {Mesh, MeshBasicMaterial, Object3D, SphereGeometry, DoubleSide, Material} from 'three';
 import { DialogueStartComponent } from "../components/dialogue-start";
@@ -8,12 +8,13 @@ import {DialogueService, StoryCharacter} from '../services/dialogue-service';
 @Actor()
 class Npc extends BaseActor {
 
-  private dialogueStart = attach(DialogueStartComponent)
+  public dialogueStart = attach(DialogueStartComponent)
   private animation = attach(CharacterAnimationComponent)
 
   public health: number = 50
 
   private dialogueService = inject(DialogueService)
+  private assetLoader = inject(AssetLoader)
 
   private info?: StoryCharacter
 
@@ -21,6 +22,18 @@ class Npc extends BaseActor {
   private model?: Object3D
 
   async onInit(): Promise<void> {
+    if (this.model != null) {
+      this.initModel()
+    }
+  }
+
+  async setModelByAssetName(name: string) {
+    const model = await this.assetLoader.getModelByAssetName(name)
+    this.model = model?.scene
+    this.initModel()
+  }
+
+  async initModel() {
     if (this.model == null) {
       this.model = new Mesh(new SphereGeometry(1), new MeshBasicMaterial({color: this.dialogueStart.objId ? 'white' : 'red'}))
     } else {

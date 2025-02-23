@@ -3,6 +3,7 @@ import { signal } from "@preact/signals-react"
 import arcweaveProject from '../arcweave.json'
 //import arcweaveProject from 'virtual:arcweave'
 import { StoryOption, ArcweaveStory } from "@hology/arcweave";
+import { ReplaySubject, Subject } from "rxjs";
 
 console.log(arcweaveProject)
 
@@ -23,9 +24,11 @@ export type DialogueElement = {
 class DialogueService {
   readonly activeDialogue = signal<DialogueElement|null>(null)
   story?: ArcweaveStory<typeof arcweaveProject>
+  readonly ready = new ReplaySubject<boolean>(1)
 
   async init() {
     this.story = new ArcweaveStory(await getProjectData())
+    this.ready.next(true)
   }
 
   startDialogue(objId: string) {
@@ -88,13 +91,42 @@ class DialogueService {
     if (this.story == null) {return}
     const componentId = this.story.findComponentId({attribute: [{name: 'object_id', value: objectId}, {name: 'object_type', value: 'character'}]})
     if (componentId == null) {
-      throw "No copmonent exists with object id " + objectId
+      throw "No character component exists with object id " + objectId
     }
     const attributes = this.story.getComponentAttributes(componentId)
     return {
       id: componentId,
       mustache: attributes.mustache != null && typeof attributes.mustache === 'string' 
         ? Number.parseInt(attributes.mustache) : undefined
+    }
+  }
+
+  getSpawnPoint(objectId: string) {
+    if (this.story == null) {return}
+    const componentId = this.story.findComponentId({attribute: [
+      {name: 'object_id', value: objectId}, 
+      {name: 'object_type', value: 'spawn_point'}
+    ]})
+    if (componentId == null) {
+      throw "No spawn point component exists with object id " + objectId
+    }
+    const characterComponentId = this.story.findComponentId({attribute: [
+      {name: 'object_type', value: 'character'}, 
+      {name: 'spawn_point', value: componentId}
+    ]})
+    if (characterComponentId == null) {
+      return {
+        id: componentId 
+      }
+    }
+    const characterAttributes = this.story.getComponentAttributes(characterComponentId)
+    return {
+      id: componentId, 
+      character: {
+        objectId: characterAttributes['object_id'] as string ?? null,
+        asset: characterAttributes['asset'] as string ?? null
+        // TODO Add other attributes needed for character customization
+      }
     }
   }
 }
@@ -105,7 +137,7 @@ export type StoryCharacter = {
   mustache?: number
 }
 
-const corsAnywhere = 'https://cors-anywhere.herokuapp.com/'
+//const corsAnywhere = 'https://cors-anywhere.herokuapp.com/'
 const url = 'https://arcweave.com/api/';
 const defaultProjectHash = 'dQlAKGj6ng'
 const apiKey: string|undefined = import.meta.env?.VITE_AW_API_KEY
