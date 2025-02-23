@@ -6,11 +6,17 @@ import { StoryOption, ArcweaveStory } from "@hology/arcweave";
 
 console.log(arcweaveProject)
 
+export type DialogueStoryEnd = {
+  body: string
+  restartButtonText: string
+}
+
 export type DialogueElement = {
   speakerName?: string
   content: string
   options: StoryOption[]
-  end: boolean
+  end: boolean,
+  storyEnd: DialogueStoryEnd|null
 }
 
 @Service()
@@ -58,11 +64,23 @@ class DialogueService {
       this.activeDialogue.value = null
       return
     }
+    const storyEndComponent = element.components.find(c => c.attributes['object_type'] === 'story_end')
+    const storyEnd = storyEndComponent != null
+      ? {
+        body: typeof storyEndComponent.attributes.body === 'string' 
+          ? storyEndComponent.attributes.body
+          : 'Game over',
+        restartButtonText: typeof storyEndComponent.attributes.restart_button_text === 'string' 
+          ? storyEndComponent.attributes.restart_button_text
+          : 'Restart',
+      } satisfies DialogueStoryEnd
+      : null
     this.activeDialogue.value = {
       speakerName: element.components.find(c => c.attributes['object_id'] != null)?.name,
       content: element.content,
       options: element.options,
-      end: element.attributes['dialogue'] === 'end' || element.options.length === 0
+      end: element.attributes['dialogue'] === 'end' || element.options.length === 0,
+      storyEnd: storyEnd
     }
   }
 

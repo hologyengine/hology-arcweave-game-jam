@@ -8,6 +8,22 @@ function Dialogue() {
   if (dialogue == null) {
     return
   }
+  
+  if (dialogue.storyEnd != null) {
+    // This should show as a modal
+    return <div className="dialogue-overlay">
+      <div className="dialogue-wrapper">
+        <div className="dialogue-name"></div>
+        <div className="dialogue-content">
+          <p dangerouslySetInnerHTML={{__html: dialogue.storyEnd.body}}></p>
+        </div>
+        <div className="dialogue-options">
+          <button onClick={() => {location.reload()}} dangerouslySetInnerHTML={{__html: dialogue.storyEnd.restartButtonText}}></button>
+        </div>
+      </div>
+    </div>
+  }
+
 
   const optionButtons = () => {
     if (dialogue.end) {
