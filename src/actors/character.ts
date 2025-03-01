@@ -1,8 +1,9 @@
 
 import { Actor, AnimationState, AnimationStateMachine, AssetLoader, BaseActor, RootMotionClip, attach, inject } from "@hology/core/gameplay";
 import { CharacterAnimationComponent, CharacterMovementComponent, CharacterMovementMode, ThirdPersonCameraComponent } from "@hology/core/gameplay/actors";
-import { DoubleSide, Material, Mesh } from "three";
-import { DialogueService } from "../services/dialogue-service";
+import { DoubleSide, FrontSide, Material, Mesh, Object3D } from "three";
+import { DialogueService, StoryCharacter } from "../services/dialogue-service";
+import {firstValueFrom} from 'rxjs';
 
 @Actor()
 class Character extends BaseActor {
@@ -28,70 +29,39 @@ class Character extends BaseActor {
     height: 1.9,
     offsetX: 0,
     offsetZ: 0,
-    minDistance: 10,
-    maxDistance: 10,
-    distance: 10,
+    minDistance: 11,
+    maxDistance: 11,
+    distance: 11,
     fixedBehind: false
   })
 
   private assetLoader = inject(AssetLoader)
   private dialogueService = inject(DialogueService)
 
+  // TODO Get the correct character info from the 
   private info? = this.dialogueService.getCharacter('odysseus')
 
   async onInit(): Promise<void> {
     this.thirdPersonCamera.camera.far = 2000
 
-    const { scene, animations } = await this.assetLoader.getModelByAssetName('Butler_Anim')
-    //const animations: AnimationClip[] = []
-    //const scene = new Mesh(new SphereGeometry(1), new MeshBasicMaterial({color: 'blue'}))
+    await firstValueFrom(this.dialogueService.ready)
+    const storySettings = this.dialogueService.getSettings()
+
+    console.log(storySettings)
+
+    const { scene, animations } = await this.assetLoader.getModelByAssetName(storySettings?.playerCharacter?.asset ?? 'Butler_Anim')
     this.object.add(scene)
-    scene.scale.multiplyScalar(1.5)
 
-    // Hide mushtaches 
-    scene.traverse(o => {
-      if (mustaches.includes(o.name)) {
-        o.visible = false
-      }
-    }) 
-    // Show mustache
-    if (this.info?.mustache != null) {
-      if (this.info.mustache in mustaches) {
-        scene.traverse(o => {
-          if (o.name === mustaches[this.info!.mustache!]) {
-            o.visible = true
-          }
-        })
-      } else {
-        console.error("No mustache exist with number " + this.info.mustache)
-      }
-    }
-    
 
-    scene.traverse(o => {
-      if (o instanceof Mesh) {
-        o.castShadow = true
-        if (o.material instanceof Material) {
-          //o.material = material
-          o.material.transparent = false
-          o.material.side = DoubleSide
-          o.material.depthWrite = true
-          o.material.alphaTest = 0.1
-        }
-        const path: string[] = []
-        o.traverseAncestors(a => {
-          path.push(a.name)
-        })
-        path.push(o.name)
-        //console.log(path.join(' -> '))
-      }
-    })
+    setupCharacterModel(scene, this.info)
+
 
     const clips = Object.fromEntries(animations.map(clip => [clip.name, clip]))
-  
-    const idle = new AnimationState(clips['Rig|Unarmed_Pose'])
-    const walk = new AnimationState(RootMotionClip.fromClipWithDistance(clips['Rig|Walking_C'], 3))
-    const jump = new AnimationState(clips.Jump_Idle)
+    const walkingClip = clips['Rig|Walking_C'] ?? clips['Rig|Walking']
+
+    const idle = new AnimationState(clips['Rig|Idle'])
+    const walk = new AnimationState(walkingClip && RootMotionClip.fromClipWithDistance(walkingClip, 3))
+    const jump = new AnimationState(clips['Rig|Jump_Idle'])
     const sprint = new AnimationState(clips['Running '])
     console.log(clips)
 
@@ -132,9 +102,78 @@ class Character extends BaseActor {
 export default Character
 
 
+export function fixCharacterMaterial(scene: Object3D) {
+  scene.traverse(o => {
+    if (o instanceof Mesh) {
+      o.castShadow = true
+      if (o.material instanceof Material) {
+        o.material.transparent = false
+        o.material.side = FrontSide
+        o.material.depthWrite = true
+        o.material.alphaTest = 0.1
+      }
+    }
+  })
+}
+
+export function hideAccessories(scene: Object3D) {
+  scene.traverse(o => {
+    if (hats.includes(o.name) || mustaches.includes(o.name)) {
+      o.visible = false
+    }
+  })
+}
+
+export function showHat(scene: Object3D, hatNumber: number) {
+  scene.traverse(o => {
+    if (o.name === hats[hatNumber]) {
+      o.visible = true
+    }
+  })
+}
+
+export function showMustache(scene: Object3D, mustacheNumber: number) {
+  scene.traverse(o => {
+    if (o.name === mustaches[mustacheNumber]) {
+      o.visible = true
+    }
+  })
+}
+
+export function setupCharacterModel(scene: Object3D, characterInfo?: StoryCharacter) {
+  hideAccessories(scene)
+  fixCharacterMaterial(scene)
+  scene.scale.multiplyScalar(1.65)
+  if (characterInfo != null) {
+    if (characterInfo?.mustache != null) {
+      if (characterInfo.mustache in mustaches) {
+        showMustache(scene, characterInfo!.mustache!)
+      } else {
+        console.error("No mustache exist with number " + characterInfo.mustache)
+      }
+    }
+
+    console.log("characterinfo hat", characterInfo.hat)
+    if (characterInfo?.hat != null) {
+      if (characterInfo.hat in hats) {
+        showHat(scene, characterInfo!.hat!)
+      } else {
+        console.error("No hat exist with number " + characterInfo.hat)
+      }
+    } 
+  }
+}
+
+
 
 const mustaches = [
   'Mustache_01',
   'Mustache_02',
   'Mustache_03',
+]
+
+const hats = [
+  'Hat001',
+  'Hat002',
+  'Hat003',
 ]

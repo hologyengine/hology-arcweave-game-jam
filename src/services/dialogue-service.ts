@@ -20,6 +20,10 @@ export type DialogueElement = {
   storyEnd: DialogueStoryEnd|null
 }
 
+export type StorySettings = {
+  playerCharacter?: StoryCharacter
+}
+
 @Service()
 class DialogueService {
   readonly activeDialogue = signal<DialogueElement|null>(null)
@@ -87,17 +91,43 @@ class DialogueService {
     }
   }
 
-  getCharacter(objectId: string) {
+  getCharacter(objectId: string): StoryCharacter|undefined {
     if (this.story == null) {return}
     const componentId = this.story.findComponentId({attribute: [{name: 'object_id', value: objectId}, {name: 'object_type', value: 'character'}]})
     if (componentId == null) {
       throw "No character component exists with object id " + objectId
     }
+    return this.getCharacterById(componentId)
+  }
+
+  getCharacterById(componentId: string): StoryCharacter|undefined {
+    if (this.story == null) {return}
     const attributes = this.story.getComponentAttributes(componentId)
+
+    // mustache is a component list
+    // so find the first component and use the mustache selection 
+    let mustache: number|undefined
+    if (attributes.mustache && Array.isArray(attributes.mustache) && attributes.mustache.length > 0) {
+      const itemComponent = this.story.getComponentAttributes(attributes.mustache[0])
+      if (itemComponent['object_id'] != null && typeof itemComponent['object_id'] === 'string') {
+        mustache = Number.parseInt(itemComponent['object_id']) - 1
+      } 
+    }
+    let hat: number|undefined
+    if (attributes.mustache && Array.isArray(attributes.hat) && attributes.hat.length > 0) {
+      const itemComponent = this.story.getComponentAttributes(attributes.hat[0])
+      if (itemComponent['object_id'] != null && typeof itemComponent['object_id'] === 'string') {
+        hat = Number.parseInt(itemComponent['object_id']) - 1
+      } 
+    }
     return {
       id: componentId,
-      mustache: attributes.mustache != null && typeof attributes.mustache === 'string' 
-        ? Number.parseInt(attributes.mustache) : undefined
+      mustache,
+      hat,
+      asset: attributes['asset'] as string ?? null
+
+      /*mustache: attributes.mustache != null && typeof attributes.mustache === 'string' 
+        ? Number.parseInt(attributes.mustache) : undefined*/
     }
   }
 
@@ -125,16 +155,42 @@ class DialogueService {
       character: {
         objectId: characterAttributes['object_id'] as string ?? null,
         asset: characterAttributes['asset'] as string ?? null
-        // TODO Add other attributes needed for character customization
       }
     }
+  }
+
+  getSettings() {
+    if (this.story == null) {return}
+
+    const componentId = this.story.findComponentId({attribute: [
+      {name: 'object_type', value: 'settings'}
+    ]})  
+    if (componentId == null) {
+      throw "No settings component exists"
+    }
+
+    const settingsAttributes = this.story.getComponentAttributes(componentId)
+    
+    const settings: StorySettings = {}
+    if (settingsAttributes['player_character'] != null && Array.isArray(settingsAttributes['player_character'])
+      && settingsAttributes['player_character'].length > 0) {
+      settings.playerCharacter = this.getCharacterById(settingsAttributes['player_character'][0])
+    } else {
+      console.warn("No player character configured in settings component")
+    }
+
+    return settings
+    
   }
 }
 
 export { DialogueService }
 
 export type StoryCharacter = {
+  id: string
   mustache?: number
+  hat?: number
+  asset?: string
 }
 
 //const corsAnywhere = 'https://cors-anywhere.herokuapp.com/'
