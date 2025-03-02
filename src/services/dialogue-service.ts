@@ -120,6 +120,8 @@ class DialogueService {
         hat = Number.parseInt(itemComponent['object_id']) - 1
       } 
     }
+    // get spawn point reference. then find a way to find the spawn point 
+    // actor in the scene to spawn the player's character
     return {
       id: componentId,
       mustache,
@@ -153,6 +155,7 @@ class DialogueService {
     return {
       id: componentId, 
       character: {
+        id: characterComponentId,
         objectId: characterAttributes['object_id'] as string ?? null,
         asset: characterAttributes['asset'] as string ?? null
       }

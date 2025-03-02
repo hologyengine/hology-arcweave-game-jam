@@ -1,9 +1,9 @@
 
 import { Actor, AnimationState, AnimationStateMachine, AssetLoader, BaseActor, RootMotionClip, attach, inject } from "@hology/core/gameplay";
 import { CharacterAnimationComponent, CharacterMovementComponent, CharacterMovementMode, ThirdPersonCameraComponent } from "@hology/core/gameplay/actors";
-import { DoubleSide, FrontSide, Material, Mesh, Object3D } from "three";
+import { firstValueFrom } from 'rxjs';
+import { FrontSide, Material, Mesh, Object3D } from "three";
 import { DialogueService, StoryCharacter } from "../services/dialogue-service";
-import {firstValueFrom} from 'rxjs';
 
 @Actor()
 class Character extends BaseActor {
@@ -47,14 +47,10 @@ class Character extends BaseActor {
     await firstValueFrom(this.dialogueService.ready)
     const storySettings = this.dialogueService.getSettings()
 
-    console.log(storySettings)
-
     const { scene, animations } = await this.assetLoader.getModelByAssetName(storySettings?.playerCharacter?.asset ?? 'Butler_Anim')
     this.object.add(scene)
 
-
     setupCharacterModel(scene, this.info)
-
 
     const clips = Object.fromEntries(animations.map(clip => [clip.name, clip]))
     const walkingClip = clips['Rig|Walking_C'] ?? clips['Rig|Walking']
@@ -63,7 +59,6 @@ class Character extends BaseActor {
     const walk = new AnimationState(walkingClip && RootMotionClip.fromClipWithDistance(walkingClip, 3))
     const jump = new AnimationState(clips['Rig|Jump_Idle'])
     const sprint = new AnimationState(clips['Running '])
-    console.log(clips)
 
     idle.transitionsBetween(walk, () => this.movement.horizontalSpeed > 0)
     walk.transitionsBetween(sprint, () => this.movement.isSprinting)

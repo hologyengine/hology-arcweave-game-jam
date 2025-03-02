@@ -1,10 +1,10 @@
 
-import {Actor, AnimationState, AnimationStateMachine, attach, BaseActor, Parameter, inject, AssetLoader} from '@hology/core/gameplay';
+import { Actor, AnimationState, AnimationStateMachine, AssetLoader, attach, BaseActor, inject, Parameter } from '@hology/core/gameplay';
 import { CharacterAnimationComponent } from "@hology/core/gameplay/actors";
-import {Mesh, MeshBasicMaterial, Object3D, SphereGeometry, DoubleSide, Material, FrontSide} from 'three';
+import { Mesh, MeshBasicMaterial, Object3D, SphereGeometry } from 'three';
 import { DialogueStartComponent } from "../components/dialogue-start";
-import {DialogueService, StoryCharacter} from '../services/dialogue-service';
-import {fixCharacterMaterial, hideAccessories, setupCharacterModel} from './character';
+import { DialogueService, StoryCharacter } from '../services/dialogue-service';
+import { setupCharacterModel } from './character';
 
 @Actor()
 class Npc extends BaseActor {

@@ -15,14 +15,15 @@ class CharacterSpawnPoint extends SpawnPoint {
   @Parameter()
   private objectId?: string
 
-  async onBeginPlay(): Promise<void> {
-    
-    console.log("IS READY", await firstValueFrom(this.dialogueService.ready))
+  async onBeginPlay(): Promise<void> {    
+    await firstValueFrom(this.dialogueService.ready)
     if (this.objectId != null) {
       const spawnPointInfo = this.dialogueService.getSpawnPoint(this.objectId)
+      const settings = this.dialogueService.getSettings()
       const characterInfo = spawnPointInfo?.character
-      if (characterInfo != null) {
-        // @ts-expect-error world will be exposed in future version
+      // Don't spawn if it references the player as it will be spawned with a different actor
+      const isPlayer = settings?.playerCharacter != null && characterInfo != null && settings.playerCharacter.id === characterInfo.id
+      if (characterInfo != null && !isPlayer) {
         const npc = await this.world.spawnActor(Npc, this.position, this.rotation)
 
         if (characterInfo.objectId == null) {

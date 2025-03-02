@@ -10,7 +10,6 @@ function Dialogue() {
   }
   
   if (dialogue.storyEnd != null) {
-    // This should show as a modal
     return <div className="dialogue-overlay">
       <div className="dialogue-wrapper">
         <div className="dialogue-name"></div>
