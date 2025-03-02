@@ -43,6 +43,7 @@ class Character extends BaseActor {
 
   async onInit(): Promise<void> {
     this.thirdPersonCamera.camera.far = 2000
+    this.thirdPersonCamera.camera.updateProjectionMatrix()
 
     await firstValueFrom(this.dialogueService.ready)
     const storySettings = this.dialogueService.getSettings()
