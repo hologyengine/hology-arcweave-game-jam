@@ -1,18 +1,18 @@
 
 
-import { NodeShaderMaterial, SimplexNoiseNode, attributes, float, lambertMaterial, mix, rgb, rgba, smoothstep, textureSampler2d, timeUniforms, transformed, translateX, uniforms, varyingAttributes, varyingFloat, vec2, vec4 } from "@hology/core/shader-nodes";
+import { SimplexNoiseNode, attributes, float, lambertMaterial, mix, rgb, rgba, smoothstep, textureSampler2d, timeUniforms, transformed, translateX, uniforms, varyingAttributes, varyingFloat, vec2, vec4 } from "@hology/core/shader-nodes";
 import { NodeShader, NodeShaderOutput, Parameter } from "@hology/core/shader/shader";
 import { Color, Texture } from "three";
 
 export default class GrassShader extends NodeShader {
   @Parameter()
-  color: Color
+  color?: Color
 
   @Parameter()
-  colorBottom: Color
+  colorBottom?: Color
 
   @Parameter()
-  alphaMap: Texture
+  alphaMap?: Texture
 
   @Parameter()
   swayAmount: number = 1
@@ -28,7 +28,7 @@ export default class GrassShader extends NodeShader {
     
     const gradientColor = mix(
       tipColor,
-      rgb(this.colorBottom),
+      rgb(this.colorBottom!),
       varyingAttributes.uv.y
     )
 
