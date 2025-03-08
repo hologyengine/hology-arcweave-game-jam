@@ -38,9 +38,6 @@ class Character extends BaseActor {
   private assetLoader = inject(AssetLoader)
   private dialogueService = inject(DialogueService)
 
-  // TODO Get the correct character info from the 
-  private info? = this.dialogueService.getCharacter('odysseus')
-
   async onInit(): Promise<void> {
     this.thirdPersonCamera.camera.far = 2000
     this.thirdPersonCamera.camera.updateProjectionMatrix()
@@ -51,7 +48,7 @@ class Character extends BaseActor {
     const { scene, animations } = await this.assetLoader.getModelByAssetName(storySettings?.playerCharacter?.asset ?? 'Butler_Anim')
     this.object.add(scene)
 
-    setupCharacterModel(scene, this.info)
+    setupCharacterModel(scene, storySettings?.playerCharacter)
 
     const clips = Object.fromEntries(animations.map(clip => [clip.name, clip]))
     const walkingClip = clips['Rig|Walking_C'] ?? clips['Rig|Walking']

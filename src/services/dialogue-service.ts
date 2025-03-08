@@ -3,7 +3,7 @@ import { signal } from "@preact/signals-react"
 import arcweaveProject from '../arcweave.json'
 //import arcweaveProject from 'virtual:arcweave'
 import { StoryOption, ArcweaveStory } from "@hology/arcweave";
-import { ReplaySubject, Subject } from "rxjs";
+import { ReplaySubject } from "rxjs";
 
 console.log(arcweaveProject)
 
@@ -114,7 +114,7 @@ class DialogueService {
       } 
     }
     let hat: number|undefined
-    if (attributes.mustache && Array.isArray(attributes.hat) && attributes.hat.length > 0) {
+    if (attributes.hat && Array.isArray(attributes.hat) && attributes.hat.length > 0) {
       const itemComponent = this.story.getComponentAttributes(attributes.hat[0])
       if (itemComponent['object_id'] != null && typeof itemComponent['object_id'] === 'string') {
         hat = Number.parseInt(itemComponent['object_id']) - 1
@@ -213,12 +213,13 @@ async function getProjectData(): Promise<typeof arcweaveProject> {
     method: 'GET',
     headers: {
         'Authorization': 'Bearer ' + apiKey,
-        'Accept': 'application/json'
+        'Accept': 'application/json',
+       // 'AW-No-Filter-Asset-Names': true
     }
   };
 
   if (apiKey != null) {
-    const response = await fetch(url + projectHash + '/json', options)
+    const response = await fetch(url + projectHash + '/json', options as RequestInit)
       .then(response => {
         if (!response.ok) {
             throw new Error(`Failed to fetch Arcweave Project. HTTP error. Status: ${response.status}`);
