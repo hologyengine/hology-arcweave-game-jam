@@ -31,7 +31,9 @@ function Start() {
             <span>Play</span>
           </div>
         </Link>
-        <img className="promo-image" src="made-with-hology.png" width={130} alt="" />
+        <a href="https://hology.app" target="_blank">
+          <img className="promo-image" src="made-with-hology.png" width={130} alt="" />
+        </a>
       </div>
     </>
   )
