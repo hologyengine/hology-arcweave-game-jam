@@ -12,7 +12,7 @@ function App() {
   const scene = params.get('scene') ?? 'main';
 
   return (
-    <HologyScene gameClass={Game} sceneName={scene} dataDir='data' shaders={shaders} actors={actors}>
+    <HologyScene gameClass={Game} sceneName={scene} dataDir='data' shaders={shaders} actors={actors} rendering={{maxPixelRatio: 1, resolutionScale: 0.8}}>
       <Dialogue/>
     </HologyScene>
   );
