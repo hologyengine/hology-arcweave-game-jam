@@ -3,7 +3,9 @@ import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
 import './index.css'
 import { registerWorker } from '@hology/core'
+import { BrowserRouter, Routes, Route } from "react-router";
 import Worker from './hology.worker.ts?worker'
+import Start from './pages/start/Start.tsx'
 
 registerWorker(() => new Worker())
 
@@ -14,6 +16,11 @@ window.addEventListener('beforeunload', (event) => {
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <Routes>
+        <Route index element={<Start />} />
+        <Route path="game" element={<App />} />
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>,
 )
