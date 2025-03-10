@@ -198,10 +198,10 @@ export type StoryCharacter = {
 
 //const corsAnywhere = 'https://cors-anywhere.herokuapp.com/'
 const url = 'https://arcweave.com/api/';
-const defaultProjectHash = 'dQlAKGj6ng'
+const defaultProjectHash = '7rEY74j0P3'
 const apiKey: string|undefined = import.meta.env?.VITE_AW_API_KEY
 
-async function getProjectData(): Promise<typeof arcweaveProject> {
+export async function getProjectData(): Promise<typeof arcweaveProject> {
   // Instead of using the api, it can just use the import json export as part of the project.
   //return arcweaveProject
   
