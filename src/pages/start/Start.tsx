@@ -28,12 +28,11 @@ function Start() {
     })
   }, [])
 
-  // need to pass along query parameter
   return (
     <>
       <div className="start-screen-bg">
         <GameTitle name={gameName} />
-        <Link to={`/game${projectId != null ? '?project=' + projectId : ''}`}>
+        <Link to={{pathname: `/game`}}>
           <div className="banner-button">
             <span>Play</span>
           </div>
