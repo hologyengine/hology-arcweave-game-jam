@@ -22,3 +22,17 @@ Open the url [http://localhost:5173/](http://localhost:5173/)
 The URL will by default show the example project. To use your own project, you need to specify your project's hash in the URL like below. 
 
 [http://localhost:5173/?project=7rEY74j0P3](http://localhost:5173/?project=7rEY74j0P3) 
+
+
+### Deploying your game
+
+To include your own changes to the project in your submission, you need upload the game to Itch.io in your submission. 
+
+First we need to ensure that your project uses your arcweave project data. There are two ways of doing this.
+
+First, you can change the default project hash specified the file `src/services/dialogue-service.ts` in the variable `defaultProjectHash` to your own. Now when the game starts, it will fetch the data from your project instead without needing to specify a query parameter in the URL. 
+
+Another approach for this involves embedding the arcweave data in your project by  exporting the data as JSON in Arcweave. Replace the contents of the file `src/arcweave.json` in this code base with the exported JSON data. Then change the code in `src/services/dialogue-service.ts` to return the `arcweaveProject` in the function `getProjectData` instead of fetching it via the API.  
+
+Once you have made the coded changes using either approach, follow this guide for how to distribute your game on Itch.io. 
+https://docs.hology.app/release/distribution/upload-to-itch.io
