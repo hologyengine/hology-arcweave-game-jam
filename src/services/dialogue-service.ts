@@ -196,7 +196,7 @@ export type StoryCharacter = {
   asset?: string
 }
 
-//const corsAnywhere = 'https://cors-anywhere.herokuapp.com/'
+
 const url = 'https://arcweave.com/api/';
 const defaultProjectHash = '7rEY74j0P3'
 const apiKey: string|undefined = import.meta.env?.VITE_AW_API_KEY
