@@ -214,12 +214,12 @@ export async function getProjectData(): Promise<typeof arcweaveProject> {
     headers: {
         'Authorization': 'Bearer ' + apiKey,
         'Accept': 'application/json',
-       // 'AW-No-Filter-Asset-Names': true
+        'AW-No-Filter-Asset-Names': 'true'
     }
   };
 
   if (apiKey != null) {
-    const response = await fetch(url + projectHash + '/json', options as RequestInit)
+    const response = await fetch(url + projectHash + '/json', options)
       .then(response => {
         if (!response.ok) {
             throw new Error(`Failed to fetch Arcweave Project. HTTP error. Status: ${response.status}`);
